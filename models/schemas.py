@@ -1,4 +1,4 @@
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, field_validator, ValidationInfo
 from typing import List, Optional, Literal
 from datetime import datetime
 
@@ -21,7 +21,7 @@ class Transaction(BaseModel):
     error_code: Optional[str]
 
     @field_validator("currency")
-    def validate_currency(cls, v):
+    def validate_currency(cls, v: str):
         if v not in VALID_CURRENCIES:
             raise ValueError(f"Invalid currency: {v}")
         return v
@@ -49,16 +49,16 @@ class Order(BaseModel):
     payment_status: Literal["paid", "failed", "refunded"]
 
     @field_validator("currency")
-    def validate_currency(cls, v):
+    def validate_currency(cls, v: str):
         if v not in VALID_CURRENCIES:
             raise ValueError(f"Invalid currency: {v}")
         return v
 
     @field_validator("total_amount")
-    def validate_total(cls, v, values):
-        items = values.get("items")
+    def validate_total_amount(cls, v: float, info: ValidationInfo):
+        items = info.data.get("items")
         if items:
-            calculated = round(sum(item.quantity * item.unit_price for item in items), 2)
+            calculated = round(sum(item["quantity"] * item["unit_price"] for item in items), 2)
             if round(v, 2) != calculated:
                 raise ValueError(f"Total amount {v} does not match items total {calculated}")
         return v
