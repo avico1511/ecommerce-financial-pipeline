@@ -1,0 +1,25 @@
+[
+    {
+      "order_id": "ord_001",
+      "customer_id": "cust_001",
+      "timestamp": "2024-01-01T09:59:00Z",
+      "total_amount": 120.0,
+      "currency": "USD",
+      "items": [
+        {"product_id": "prod_001", "quantity": 2, "unit_price": 60.0}
+      ],
+      "payment_status": "paid"
+    },
+    {
+      "order_id": "ord_002",
+      "customer_id": "cust_002",
+      "timestamp": "2024-01-01T10:45:00Z",
+      "total_amount": 80.0,
+      "currency": "USD",
+      "items": [
+        {"product_id": "prod_002", "quantity": 1, "unit_price": 80.0}
+      ],
+      "payment_status": "failed"
+    }
+  ]
+  

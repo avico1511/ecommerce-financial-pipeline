@@ -1,0 +1,29 @@
+[
+    {
+      "transaction_id": "txn_001",
+      "order_id": "ord_001",
+      "timestamp": "2024-01-01T10:00:00Z",
+      "amount": 120.0,
+      "currency": "USD",
+      "status": "completed",
+      "payment_method": {
+        "type": "credit_card",
+        "provider": "Visa"
+      },
+      "error_code": null
+    },
+    {
+      "transaction_id": "txn_002",
+      "order_id": "ord_002",
+      "timestamp": "2024-01-01T11:00:00Z",
+      "amount": 80.0,
+      "currency": "USD",
+      "status": "failed",
+      "payment_method": {
+        "type": "wallet",
+        "provider": "PayPal"
+      },
+      "error_code": "DECLINED"
+    }
+  ]
+  

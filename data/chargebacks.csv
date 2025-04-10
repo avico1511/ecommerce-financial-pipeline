@@ -1,0 +1,2 @@
+transaction_id,dispute_date,amount,reason_code,status,resolution_date
+txn_001,2024-01-03,120.0,RC001,open,2024-01-07
